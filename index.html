@@ -1,0 +1,68 @@
+<html>
+	<head>
+		<title>『日本歴史大辞典』（河出書房新社）検索</title>
+		<link rel="shortcut icon" href="kiwi-bird.png">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+		<meta name="viewport" content="width=device-width,initial-scale=1.0">
+		<link rel="stylesheet" href="./kRekishiDaijiten.css">
+	</head>
+	<body>
+		<h3>『日本歴史大辞典』（河出書房新社/1985）検索</h3>
+		<strong>索引検索</strong>
+		<br>
+		<button id="Ippan" class="toggle-button">一般項目</button>
+		<button id="Shoshi" class="toggle-button">書誌</button>
+		<button id="ChimeiIseki" class="toggle-button">地名・遺跡</button>
+		<br>
+		<button id="NihonjinSeishi" class="toggle-button">日本人名（姓氏）</button>
+		<button id="Nihonjin" class="toggle-button">日本人名</button>
+		<button id="Gaikokujin" class="toggle-button">外国人名</button>
+		<br>
+		<button id="Tennou" class="toggle-button">天皇</button>
+		<br>
+		<input type="textfield" id="TextEntry" size="40" placeholder="ひらがなで検索語を入力"/>
+		<br>
+		<button id="IndexSearch" >索引検索（Shift+Enter）</button>
+		<button id="EraseEntry" >索引語消去（Escape）</button>
+		<hr>
+		<input type="textfield" id="PageEntry" size="40" placeholder="巻数（2桁）に続けてページを入力"/>
+		<br>
+		<button id="OpenPage" >ページを開く（Enter）</button>
+		<button id="ErasePage" >ページ消去（Escape）</button>
+
+		<hr>
+		<strong>年表表示：</strong><input type="textield" id="Nenpyo" placeholder="西暦年を入力後、Enter"/>
+		<button id="NengouSakuin">11巻年号索引へ</button>
+		<hr>
+		<strong>図表：</strong><select id="ZuhyoSelector"></select>
+		<br>
+		<strong>日本歴史地図：</strong><select id="BekkanSelector"></select>
+		<hr>
+		<strong>写真：</strong>
+		<br>
+		　<a href="javascript:photoMenu(0);">あ</a>　
+		　<a href="javascript:photoMenu(1);">か</a>　
+		　<a href="javascript:photoMenu(2);">さ</a>　
+		　<a href="javascript:photoMenu(3);">た</a>　
+		　<a href="javascript:photoMenu(4);">な</a>　
+		<br>
+		　<a href="javascript:photoMenu(5);">は</a>　
+		　<a href="javascript:photoMenu(6);">ま</a>　
+		　<a href="javascript:photoMenu(7);">や</a>　
+		　<a href="javascript:photoMenu(8);">ら</a>　
+		　<a href="javascript:photoMenu(9);">わ</a>　
+		<div>
+			<table border="1" id="PhotoMenuTable"></table>
+		</div>
+		<br><br><br>
+		<div class="footer">
+		使用するには国立国会図書館デジタルコレクションの<a href="https://www.ndl.go.jp/jp/use/digital_transmission/individuals_index.html">個人向けデジタル化資料送信サービス</a>に登録、ログインしておく必要があります。
+		</div>
+
+		<script src="./assets/bigIndex.js"></script>
+		<script src="./assets/bekkan.js"></script>
+		<script src="./assets/photoIndex.js"></script>
+		<script src="./scripts/regulator.js"></script>
+		<script src="./scripts/kRekishiDaijiten.js"></script>
+	</body>
+<html>
