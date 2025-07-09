@@ -6,7 +6,8 @@ class GlobalManager {
 		this.chimeiIseki = document.getElementById("ChimeiIseki");
 		this.nihonjinSeishi = document.getElementById("NihonjinSeishi");
 		this.nihonjin = document.getElementById("Nihonjin");
-		this.gaikokujin = document.getElementById("Gaikokujin");
+		this.gaikokujinE = document.getElementById("GaikokujinE");
+		this.gaikokujinW = document.getElementById("GaikokujinW");
 		this.tennou = document.getElementById("Tennou");
 		this.textEntry = document.getElementById("TextEntry");
 		this.textEntry.addEventListener("focus", () => {this.textEntry.select();});
@@ -75,8 +76,9 @@ function setMode() {
 	else if (G.chimeiIseki.classList.contains("selected")) G.mode = 2;
 	else if (G.nihonjinSeishi.classList.contains("selected")) G.mode = 3;
 	else if (G.nihonjin.classList.contains("selected")) G.mode = 4;
-	else if (G.gaikokujin.classList.contains("selected")) G.mode = 5;
-	else G.mode = 6;
+	else if (G.gaikokujinE.classList.contains("selected")) G.mode = 5;
+	else if (G.gaikokujinW.classList.contains("selected")) G.mode = 6;
+	else G.mode = 7;
 }
 
 function searchIndex() {
@@ -86,7 +88,7 @@ function searchIndex() {
 		return String.fromCharCode(s.charCodeAt(0) - 0x60);
 	});
 	let rTarget = R.regulate(target);
-	if ((rTarget.length == 0) && (G.mode != 6))  return;
+	if ((rTarget.length == 0) && (G.mode != 7))  return;
 	let idx = bigIndex[G.mode].length - 1;
 	while ((idx >= 0) && (bigIndex[G.mode][idx] > rTarget)) {
 		idx--;
