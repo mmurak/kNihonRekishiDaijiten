@@ -51,18 +51,18 @@ class GlobalManager {
 		this.idxURL = "https://dl.ndl.go.jp/pid/12192280/1/";	// 10
 		this.urls = [
 			[],
-			["https://dl.ndl.go.jp/pid/12192272/1/", 15],	// 1
-			["https://dl.ndl.go.jp/pid/12195949/1/", 14],
-			["https://dl.ndl.go.jp/pid/12196002/1/", 14],
-			["https://dl.ndl.go.jp/pid/12195950/1/", 14],
-			["https://dl.ndl.go.jp/pid/12196081/1/", 14],	// 5
-			["https://dl.ndl.go.jp/pid/12192186/1/", 14],
-			["https://dl.ndl.go.jp/pid/12192233/1/", 14],
-			["https://dl.ndl.go.jp/pid/12195954/1/", 14],
-			["https://dl.ndl.go.jp/pid/12192235/1/", 14],
-			["https://dl.ndl.go.jp/pid/12192280/1/", 10],	// 10
-			["https://dl.ndl.go.jp/pid/12192139/1/", 4],
-			["https://dl.ndl.go.jp/pid/12883421/1/", 12],
+			["https://dl.ndl.go.jp/pid/12192272/1/", 15, 651],	// 1
+			["https://dl.ndl.go.jp/pid/12195949/1/", 14, 677],
+			["https://dl.ndl.go.jp/pid/12196002/1/", 14, 659],
+			["https://dl.ndl.go.jp/pid/12195950/1/", 14, 703],
+			["https://dl.ndl.go.jp/pid/12196081/1/", 14, 721],	// 5
+			["https://dl.ndl.go.jp/pid/12192186/1/", 14, 647],
+			["https://dl.ndl.go.jp/pid/12192233/1/", 14, 655],
+			["https://dl.ndl.go.jp/pid/12195954/1/", 14, 737],
+			["https://dl.ndl.go.jp/pid/12192235/1/", 14, 735],
+			["https://dl.ndl.go.jp/pid/12192280/1/", 10, 579],	// 10
+			["https://dl.ndl.go.jp/pid/12192139/1/", 4, 531],
+			["https://dl.ndl.go.jp/pid/12883421/1/", 12, 265],
 		];
 	}
 }
@@ -103,9 +103,18 @@ function openDirect() {
 	const m = vPage.match(/^([0-9０-９][0-9０-９])[^0-9０-９]*([0-9０-９]+)$/);
 	if (m == null)  return;
 	const vol = Number(m[1]);
-	const page = fixOverlayPages(vol, Number(m[2]));
-	const rPage = Math.trunc(Number(page) / 2) + G.urls[vol][1];
-	windowOpen(G.urls[vol][0] + rPage, "検索結果");
+	if ((vol >= G.urls.length) || (vol < 1)) {
+		alert("巻数には1〜12を指定してください。");
+		return -1;
+	}
+	const nombre = Number(m[2]);
+	if ((G.urls[vol][2] < nombre) || (nombre < 1)) {
+		alert(vol + "巻で指定可能なページ数は1〜" + G.urls[vol][2] + "です。");
+		return -1;
+	}
+	const page = fixOverlayPages(vol, nombre);
+	const frame = Math.trunc(Number(page) / 2) + G.urls[vol][1];
+	windowOpen(G.urls[vol][0] + frame, "検索結果");
 }
 
 function fixOverlayPages(volNo, page) {
